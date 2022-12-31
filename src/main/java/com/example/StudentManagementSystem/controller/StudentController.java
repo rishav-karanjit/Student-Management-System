@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 @RequestMapping(path = "")
 public class StudentController {
-    @ResponseBody
     @GetMapping
     public String home(){
-        return("Hello World");
+        return "index";
     }
 }
