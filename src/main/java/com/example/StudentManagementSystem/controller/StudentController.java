@@ -21,9 +21,10 @@ public class StudentController {
         model.addAttribute("data","Hello World");
         return "index";
     }
-    @GetMapping("/student")
+    @GetMapping("/ListAllStudent")
     public String ListStudents(Model model){
-        model.addAttribute("student",studentService.getAllStudents());
+        System.out.println(studentService.getAllStudents());
+        model.addAttribute("students",studentService.getAllStudents());
         return "AllStudents";
     }
 }
