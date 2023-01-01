@@ -19,4 +19,8 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
+
+    public void save(Student s){
+        studentRepository.save(s);
+    }
 }
