@@ -54,7 +54,6 @@ public class StudentController {
         existingStudent.setName(student.getName());
         existingStudent.setEmail(student.getEmail());
         existingStudent.setDob(student.getDob());
-        existingStudent.setAge(student.getAge());
 
         studentService.save(existingStudent);
         return "redirect:/";
