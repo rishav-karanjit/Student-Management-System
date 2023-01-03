@@ -4,10 +4,7 @@ import com.example.StudentManagementSystem.entity.Student;
 import com.example.StudentManagementSystem.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping(path = "")
@@ -42,5 +39,25 @@ public class StudentController {
     public String saveStudent(@ModelAttribute("student") Student student){
         studentService.save(student);
         return "redirect:/";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editStudent(@PathVariable Long id, Model model){
+        model.addAttribute("student",studentService.getStudentById(id));
+        return "editStudent";
+    }
+
+    @PostMapping("/students/{id}")
+    public String editStudent(@PathVariable Long id, @ModelAttribute("student") Student student,Model model){
+        Student existingStudent = studentService.getStudentById(id);
+
+        existingStudent.setName(student.getName());
+        existingStudent.setEmail(student.getEmail());
+        existingStudent.setDob(student.getDob());
+        existingStudent.setAge(student.getAge());
+
+        studentService.save(existingStudent);
+        return "redirect:/";
+
     }
 }
