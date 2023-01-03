@@ -61,8 +61,4 @@ public class Student {
     public void setDob(LocalDate dob) {
         this.dob = dob;
     }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 }
